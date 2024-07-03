@@ -28,8 +28,8 @@ pub struct MtRaw {
     /// Cycling packet sequence number.
     pub sequence_number: usize,
 
-    /// Raw data.
-    pub data: [u8; 36],
+    /// Raw data in hex.
+    pub data: String,
 
     /// Checksum.
     pub checksum: u16,
@@ -77,7 +77,7 @@ pub struct MtRaw {
         let header = message[0..3].to_string();
         let id = message[3..6].to_string();
         let sequence_number = message[6..9].parse::<usize>()?;
-        let data: [u8; 36] = message[9..45].as_bytes().try_into().unwrap();
+        let data = message[9..45].to_string();
         let checksum = u16::from_str_radix(&message[45..49], 16)?;
 
         // TODO: calculate checksum here?

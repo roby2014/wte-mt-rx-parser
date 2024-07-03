@@ -155,7 +155,7 @@ mod tests {
         if let Ok(ParsedMessage::MtRaw(v)) =
             parse("MT6001001FFFE2FA00E0000CBAB959DB0903788C71B79F84B")
         {
-            assert_eq!(mt_raw::compute_checksum(&v.data), v.checksum);
+            assert_eq!(mt_raw::compute_checksum(&v.data.as_bytes()), v.checksum);
         }
     }
 }

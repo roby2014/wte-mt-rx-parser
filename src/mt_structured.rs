@@ -67,8 +67,8 @@ pub struct MtStructured {
     /// Character format flag.
     pub format_flag: char,
 
-    /// Beacon owner and capabilities.
-    pub beacon: [u8; 15],
+    /// Beacon hex code.
+    pub beacon: String,
 
     /// Signal strength indication.
     pub signal_strength: [char; 2],
@@ -145,7 +145,7 @@ pub struct MtStructured {
         let sequence_number = message[6..9].parse::<usize>()?;
         let message_type = (message.as_bytes()[9] as char).into();
         let format_flag = message.as_bytes()[10] as char;
-        let beacon: [u8; 15] = message[11..26].as_bytes().try_into().unwrap();
+        let beacon = message[11..26].to_string();
         let signal_strength = [
             message.as_bytes()[26] as char,
             message.as_bytes()[27] as char,
