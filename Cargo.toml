@@ -1,0 +1,16 @@
+[package]
+name = "wte-mt-rx-parser"
+version = "0.1.4"
+edition = "2021"
+description = "MT-RX-3+ (AIS, 406 + 121.5) message parser"
+license = "MIT"
+repository = "https://github.com/roby2014/wte-mt-rx-parser"
+authors = ["Roberto Carlos <roby2x14@gmail.com>"]
+keywords = ["mt-rx", "ais", "rss", "epirb", "receiver"]
+categories = ["parsing"]
+readme = "readme.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+thiserror = "1.0.61"
