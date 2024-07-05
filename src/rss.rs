@@ -3,7 +3,7 @@
 //! The serial output format for the RSS frequency is:
 //! - `SS,1,NNN<CR>`
 //!
-//! where `NNN` is a value between 0 and 255. This value is not calibrated, 
+//! where `NNN` is a value between 0 and 255. This value is not calibrated,
 //! but is approximately `-130 + (NNN / 2)` dBm.
 //!
 //! When an RSS is above the SQUELCH level the following serial output is generated, regardless of
@@ -16,9 +16,9 @@ use crate::ParseError;
 #[derive(Clone, Debug, PartialEq)]
 pub enum RssType {
     /// Frequency message `SS,1,NNN<CR>`.
-    Frequency(),
+    Frequency,
     /// Alert message `SS,A,NNN<CR>`.
-    Alert(),
+    Alert,
 }
 
 /// Represents a RSS “Received Signal Strength" message.
@@ -68,11 +68,11 @@ pub fn parse(message: &str) -> Result<Rss, ParseError> {
     match x {
         b'A' => Ok(Rss {
             nnn,
-            rss_type: RssType::Alert(),
+            rss_type: RssType::Alert,
         }),
         b'1' => Ok(Rss {
             nnn,
-            rss_type: RssType::Frequency(),
+            rss_type: RssType::Frequency,
         }),
         _ => Err(ParseError::Invalid),
     }
