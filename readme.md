@@ -50,15 +50,44 @@ fn main() {
 }
 ```
 
-Output:
+result:
 ```
-Ok(MtStructured(MtStructured { header: "MT1", id: "001", sequence_number: 0, message_type: Alert, format_flag: 'L', beacon: [52, 48, 48, 67, 53, 57, 50, 55, 53, 51, 53, 55, 50, 66, 51], signal_strength: ['2', '3'], lat_degrees: 43, lat_minutes: 32, lat_seconds: 12, n: 'S', long_degrees: 172, long_minutes: 37, long_seconds: 56, w: 'E', checksum: 18182 }))
-    
-Ok(MtRaw(MtRaw { header: "MT6", id: "001", sequence_number: 1, data: [70, 70, 70, 69, 50, 70, 65, 48, 48, 69, 48, 48, 48, 48, 67, 66, 65, 66, 57, 53, 57, 68, 66, 48, 57, 48, 51, 55, 56, 56, 67, 55, 49, 66, 55, 57], checksum: 63563 }))
-    
-Ok(Rss(Rss { rss_type: Alert, nnn: 123 }))
+Ok(MtStructured(MtStructured {
+    header: "MT1",
+    id: "001",
+    sequence_number: 0,
+    message_type: Alert,
+    format_flag: 'L',
+    beacon: "400C592753572B3",
+    signal_strength: "23",
+    lat_degrees: Some(43),
+    lat_minutes: Some(32),
+    lat_seconds: Some(12),
+    lat_direction: South,
+    long_degrees: Some(172),
+    long_minutes: Some(37),
+    long_seconds: Some(56),
+    long_direction: East,
+    checksum: 18182
+}))
 
-Ok(Rss(Rss { rss_type: Frequency, nnn: 123 }))
+Ok(MtRaw(MtRaw {
+    header: "MT6",
+    id: "001",
+    sequence_number: 1,
+    data: "FFFE2FA00E0000CBAB959DB0903788C71B79",
+    checksum: 63563
+}))
+
+Ok(Rss(Rss {
+    rss_type: Alert,
+    nnn: 123
+}))
+
+Ok(Rss(Rss {
+    rss_type: Frequency,
+    nnn: 123
+}))
 ```
 
 ## Contributing

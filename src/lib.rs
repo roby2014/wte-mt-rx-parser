@@ -73,6 +73,20 @@ mod tests {
     use super::*;
 
     #[test]
+    fn sample_usage() {
+        let samples = vec![
+            "MT1001000AL400C592753572B323433212S1723756E4706",
+            "MT6001001FFFE2FA00E0000CBAB959DB0903788C71B79F84B",
+            "SS,A,123",
+            "SS,1,123",
+        ];
+
+        for s in samples {
+            println!("{:?}", parse(s));
+        }
+    }
+
+    #[test]
     fn mt_structured() {
         assert!(parse("MT1001000AL400C592753572B323433212S1723756E4706").is_ok());
         assert!(parse("MT1001000AL400C592753572B323433212S1723756E4706").is_ok());
