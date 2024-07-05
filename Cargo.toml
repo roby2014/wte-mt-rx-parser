@@ -1,6 +1,6 @@
 [package]
 name = "wte-mt-rx-parser"
-version = "0.2.4"
+version = "0.3.0"
 edition = "2021"
 description = "MT-RX-3+ (AIS, 406 + 121.5) message parser"
 license = "MIT"
