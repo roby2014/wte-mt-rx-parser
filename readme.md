@@ -47,6 +47,7 @@ fn main() {
     for s in samples {
         println!("{:?}", wte_mt_rx_parser::parse(s));
     }
+}
 ```
 
 Output:

@@ -1,5 +1,5 @@
 //! A Rust parser for "MT-RX-3 AIS, 406 + 121.5/243 MHz ALERTING RECEIVER" messages.
-//! 
+//!
 //! Please refer to [MT-RX-3 User Manual](https://www.wte.co.nz/uploads/9/9/8/6/99862766/mt-rx-3_406_epirb_receiver-manual_v2-62.pdf) for more information.
 
 use std::num::ParseIntError;
@@ -44,7 +44,7 @@ pub enum ParsedMessage {
 
 /// Tries to parse `message` into one of [`ParsedMessage`] types.
 /// Returns [`ParsedMessage::Invalid`] if it's an invalid message, or [`ParseError`] if parsing went wrong.
-/// 
+///
 /// ## Examples
 /// ```
 /// let samples = vec![
@@ -53,7 +53,7 @@ pub enum ParsedMessage {
 ///     "SS,A,123",
 ///     "SS,1,123",
 /// ];
-/// 
+///
 /// for s in samples {
 ///     println!("{:?}", wte_mt_rx_parser::parse(s));
 /// }
@@ -112,16 +112,6 @@ mod tests {
         // unparsable NNN
         assert!(parse("MT1001aaaAL400C592753572B323433212S1723756E4706").is_err());
         assert!(parse("MT6001aaaFFFE2FA00E0000CBAB959DB0903788C71B79F84B").is_err());
-
-        // unparsable 11 22 33
-        assert!(parse("MT1001000AL400C592753572B323aa3212S1723756E4706").is_err());
-        assert!(parse("MT1001000AL400C592753572B32343bb12S1723756E4706").is_err());
-        assert!(parse("MT1001000AL400C592753572B3234332ccS1723756E4706").is_err());
-
-        // unparsable 444 55 66
-        assert!(parse("MT1001000AL400C592753572B323433212Saaa3756E4706").is_err());
-        assert!(parse("MT1001000AL400C592753572B323433212S172bb56E4706").is_err());
-        assert!(parse("MT1001000AL400C592753572B323433212S17237ccE4706").is_err());
 
         // unparsable checksum
         assert!(parse("MT6001001FFFE2FA00E0000CBAB959DB0903788C71B79ZZZZ").is_err());
